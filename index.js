@@ -7,7 +7,7 @@ const express = require("express");
 async function startServer() {
   const app = express();
 
-  await loaders.express({ expressApp: app });
+  await loaders.express(app);
 
   app.listen(config.port, (err) => {
     if (err) {

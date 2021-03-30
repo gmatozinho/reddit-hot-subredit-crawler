@@ -1,8 +1,8 @@
 const expressLoader = require("./express");
 const sequelize = require("./sequelize");
 
-const express = async (expressApp) => {
-  await expressLoader({ app: expressApp });
+const express = async (app) => {
+  await expressLoader(app);
   console.log("Express Initialized");
 };
 
