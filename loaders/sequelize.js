@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const config = require("./config");
+const config = require("../config");
 const model = require("../models");
 const sequelize = new Sequelize(
   config.DB_SCHEMA,
@@ -9,12 +9,10 @@ const sequelize = new Sequelize(
     host: config.DB_HOST,
     port: config.DB_PORT,
     dialect: "postgres",
-    dialectOptions: {
-      ssl: config.DB_SSL == "true",
-    },
   }
 );
 
 module.exports = {
+  db: sequelize,
   post: model.post(sequelize),
 };
