@@ -4,13 +4,21 @@ const { sequelize } = require("../loaders");
 const post = sequelize.post;
 
 const readAll = async () => {
-  const result = await post.findAll();
-  return result;
+  try {
+    const result = await post.findAll();
+    return result;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const insert = async (body) => {
-  const result = await post.build(body).save();
-  return result;
+  try {
+    const result = await post.build(body).save();
+    return result;
+  } catch (error) {
+    throw error;
+  }
 };
 
 const update = () => {
