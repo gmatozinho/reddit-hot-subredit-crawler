@@ -2,6 +2,10 @@ const Sequelize = require("sequelize");
 
 module.exports = (sequelize) => {
   const Post = sequelize.define("Post", {
+    title: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
     author_name: {
       type: Sequelize.STRING,
       allowNull: true,
