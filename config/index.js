@@ -11,5 +11,11 @@ if (env.error) {
 
 module.exports = {
   port: parseInt(process.env.PORT, 10),
-  databaseURL: process.env.POSTGRES_URL,
+  reddit_url: "https://api.reddit.com/r/artificial/hot",
+  DB_SCHEMA: process.env.DB_SCHEMA,
+  DB_HOST: process.env.DB_HOST,
+  DB_PASSWORD: process.env.DB_PASSWORD,
+  DB_USER: process.env.DB_USER,
+  DB_PORT: process.env.DB_PORT,
+  DB_SSL: process.env.DB_SSL,
 };
