@@ -1,15 +1,22 @@
 const cron = require("node-cron");
 const axios = require("axios");
 const { to } = require("await-to-js");
+const config = require("../config");
+const { post } = require("../controllers");
 
 const reddit_artificial_puller = cron.schedule("* * * * *", async () => {
-  const [err, response] = await to(
-    axios.get("https://api.reddit.com/r/artificial/hot")
-  );
+  console.log("Execute task every minute");
+  const [err, response] = await to(axios.get(config.reddit_url));
 
   if (err) throw err;
 
-  console.log("Executando a tarefa a cada 1 minuto");
+  const result = await Promise.allSettled(
+    response.data.children.map(async (child) => {
+      const body = {};
+
+      const result = await post.insert(body);
+    })
+  );
 });
 
 reddit_artificial_puller.start();
