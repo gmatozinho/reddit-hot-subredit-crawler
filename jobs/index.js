@@ -11,12 +11,21 @@ const reddit_artificial_puller = cron.schedule("* * * * *", async () => {
   if (err) throw err;
 
   const result = await Promise.allSettled(
-    response.data.children.map(async (child) => {
-      const body = {};
+    response.data.data.children.map(async (child) => {
+      const body = {
+        title: child.data.title,
+        author_name: child.data.author,
+        create_date: child.data.created_utc,
+        ups: child.data.ups,
+        comments: child.data.num_comments,
+      };
 
-      const result = await post.insert(body);
+      const [err, response] = await to(post.insert(body));
+      if (err) throw err;
+      return response;
     })
   );
+
 });
 
 reddit_artificial_puller.start();
