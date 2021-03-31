@@ -15,7 +15,7 @@ const reddit_artificial_puller = cron.schedule("* * * * *", async () => {
       const body = {
         title: child.data.title,
         author_name: child.data.author,
-        create_date: child.data.created_utc,
+        create_date: new Date(child.data.created_utc * 1000),
         ups: child.data.ups,
         comments: child.data.num_comments,
       };
@@ -26,6 +26,7 @@ const reddit_artificial_puller = cron.schedule("* * * * *", async () => {
     })
   );
 
+  console.log(result)
 });
 
 reddit_artificial_puller.start();
