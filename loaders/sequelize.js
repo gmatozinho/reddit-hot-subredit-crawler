@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
   }
 );
 
+sequelize.sync();
 module.exports = {
   db: sequelize,
   post: model.post(sequelize),
