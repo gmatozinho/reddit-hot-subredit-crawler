@@ -12,4 +12,4 @@ RUN npm install nodemon -g --quiet
 
 COPY . /home/app
 
-CMD ./scripts/start.sh
+CMD npm start
