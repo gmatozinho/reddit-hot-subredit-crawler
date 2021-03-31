@@ -1,11 +1,10 @@
 const { NotImplemented } = require("http-errors");
-const { sequelize } = require("../loaders");
+var  {post}  = require("../loaders/sequelize");
 
-const post = sequelize.post;
 
-const readAll = async () => {
+const read = async (params) => {
   try {
-    const result = await post.findAll();
+    const result = await post.findAll(params);
     return result;
   } catch (error) {
     throw error;
@@ -30,7 +29,7 @@ const remove = () => {
 };
 
 module.exports = {
-  readAll,
+  read,
   insert,
   update,
   remove,

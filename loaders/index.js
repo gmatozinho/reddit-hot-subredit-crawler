@@ -8,5 +8,5 @@ const express = async (app) => {
 
 module.exports = {
   express,
-  sequelize,
+  sequelize
 };
