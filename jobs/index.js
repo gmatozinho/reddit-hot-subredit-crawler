@@ -4,7 +4,7 @@ const { to } = require("await-to-js");
 const config = require("../config");
 const { post } = require("../controllers");
 
-const reddit_artificial_puller = cron.schedule("* * * * *", async () => {
+const reddit_artificial_puller = cron.schedule("0 1 * * *", async () => {
   console.log("Execute task every minute");
   const [err, response] = await to(axios.get(config.reddit_url));
 

@@ -1,6 +1,5 @@
 const { NotImplemented } = require("http-errors");
-var  {post}  = require("../loaders/sequelize");
-
+var { post } = require("../loaders/sequelize");
 
 const read = async (params) => {
   try {
